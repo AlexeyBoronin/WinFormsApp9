@@ -118,7 +118,7 @@
             // 
             numResolution.Location = new Point(10, 35);
             numResolution.Maximum = new decimal(new int[] { 25, 0, 0, 0 });
-            numResolution.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numResolution.Minimum = new decimal(new int[] { 2, 0, 0, 0 });
             numResolution.Name = "numResolution";
             numResolution.Size = new Size(120, 23);
             numResolution.TabIndex = 1;
