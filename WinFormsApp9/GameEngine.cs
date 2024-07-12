@@ -13,12 +13,13 @@ namespace WinFormsApp9
         private bool[,] field;
         private readonly int rows;
         private readonly int cols;
-        private Random random=new Random();
+        
 
         public GameEngine(int rows, int cols,int density)
         {
             this.rows = rows;
             this.cols = cols;
+            Random random = new Random();
             field = new bool[cols, rows];
             for (int x = 0; x < cols; x++)
             {
@@ -80,6 +81,23 @@ namespace WinFormsApp9
             }
             return count;
         }
-
+        private bool ValidateCellPosition(int x, int y)
+        {
+            return x >= 0 && y >= 0 && x < cols && y < rows;
+        }
+        private void UpdateCell(int x, int y, bool state)
+        {
+          
+            if (ValidateCellPosition(x, y))
+                field[x, y] = state;
+        }
+        public void AddCell(int x, int y)
+        {
+            UpdateCell(x, y, true);
+        }
+        public void RemoveCell(int x, int y)
+        {
+            UpdateCell(x, y, false);
+        }
     }
 }

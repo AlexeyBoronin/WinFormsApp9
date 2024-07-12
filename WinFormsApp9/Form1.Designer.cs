@@ -97,6 +97,7 @@
             // numDensity
             // 
             numDensity.Location = new Point(10, 85);
+            numDensity.Maximum = new decimal(new int[] { 25, 0, 0, 0 });
             numDensity.Minimum = new decimal(new int[] { 2, 0, 0, 0 });
             numDensity.Name = "numDensity";
             numDensity.Size = new Size(120, 23);

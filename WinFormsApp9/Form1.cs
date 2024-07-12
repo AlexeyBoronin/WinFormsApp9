@@ -25,6 +25,7 @@ namespace WinFormsApp9
                 (
                     rows: pictureBox1.Height / resolution,
                     cols: pictureBox1.Width / resolution,
+                    density: (int)numDensity.Minimum+(int)numDensity.Maximum-
                     (int)numDensity.Value
                 );
             
@@ -49,27 +50,7 @@ namespace WinFormsApp9
             engine.NextGeneration();
         }
         
-        //private int CountNeighbours(int x, int y)
-        //{
-        //    int count = 0;
-        //    for (int i = -1; i < 2; i++)
-        //    {
-        //        for (int j = -1; j < 2; j++)
-        //        {
-        //            var col = (x + i + cols) % cols;
-        //            var row = (y + j + rows) % rows;
-
-        //            var isSelfCheking = col == x && row == y;
-        //            var hasLife = field[col, row];
-
-        //            if (hasLife && !isSelfCheking)
-        //            {
-        //                count++;
-        //            }
-        //        }
-        //    }
-        //    return count;
-        //}
+       
         private void StopGame()
         {
             if (!timer1.Enabled)
@@ -95,27 +76,20 @@ namespace WinFormsApp9
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-        //    if(!timer1.Enabled) return;
-        //    if(e.Button == MouseButtons.Left)
-        //    {
-        //        var x=e.Location.X/resolution;
-        //        var y=e.Location.Y/resolution;
-        //        var validationPassed=ValidateMousePosition(x, y);
-        //        if(validationPassed)
-        //            field[x, y] = true;
-        //    }
-        //    if (e.Button == MouseButtons.Right)
-        //    {
-        //        var x = e.Location.X / resolution;
-        //        var y = e.Location.Y / resolution;
-        //        var validationPassed = ValidateMousePosition(x, y);
-        //        if (validationPassed)
-        //            field[x, y] = false;
-        //    }
+            if (!timer1.Enabled) return;
+            if (e.Button == MouseButtons.Left)
+            {
+                var x = e.Location.X / resolution;
+                var y = e.Location.Y / resolution;
+                engine.AddCell(x, y);
+            }
+            if (e.Button == MouseButtons.Right)
+            {
+                var x = e.Location.X / resolution;
+                var y = e.Location.Y / resolution;
+                engine.RemoveCell(x, y);
+            }
         }
-        //private bool ValidateMousePosition(int x, int y)
-        //{
-        //    return x>=0 && y>=0 &&x<cols && y<rows;
-        //}
+        
     }
 }
